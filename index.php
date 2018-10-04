@@ -1,3 +1,20 @@
+<?php
+require('dbconnect.php');
+
+// DBから未完了タスクを取得する処理
+$sql = 'SELECT * FROM `tasks` WHERE `done` = 0 ORDER BY `plan_date` DESC';
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+$tasks = array();
+while (1) {
+    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($rec == false) {
+        break;
+    }
+    $tasks[] = $rec;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -34,58 +51,6 @@
                               <i class="fa fa-ellipsis-v"></i>
                             </span>
                             <input type="checkbox" value="" name="">
-                            <span class="text">Design a nice theme</span>
-                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Make the theme responsive</span>
-                            <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
                             <span class="text">Check your messages and notifications</span>
                             <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
                             <div class="tools">
@@ -93,22 +58,8 @@
                               <i class="fa fa-trash-o"></i>
                             </div>
                           </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
                         </ul>
                       </div>
-
                 </div>
                 </div>
             </div>
