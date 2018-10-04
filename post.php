@@ -82,13 +82,13 @@ if(!empty($_POST)){
                         <label>優先順位</label>
                         <br>
                         <label class="checkbox-inline">
-                            <input type="radio" name="priority" value="high" checked="checked">高
+                            <input type="radio" name="priority" value="高" checked="checked">高
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" name="priority" value="middle">中
+                            <input type="radio" name="priority" value="中">中
                         </label>
                         <label class="checkbox-inline">
-                            <input type="radio" name="priority" value="low">低
+                            <input type="radio" name="priority" value="低">低
                         </label>
                     </div>
                         <input type="hidden" name="friend_id" value="<?php echo $friend_id; ?>">

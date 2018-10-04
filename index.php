@@ -33,34 +33,34 @@ while (1) {
 
 <!-- 未完了タスク -->
     <div class="container">
-        <div class="row row-bottom-padded-md " id="done">
+        <div class="row row-bottom-padded-md " id="not_done">
             <div class="col-xs-12 col-md-12">
                 <div class="box box-aqua">
-                <div class="box-header ui-sortable-handle" style="cursor: move;">
-                    <i class="ion ion-clipboard"></i>
-                    <h3 class="box-title">未完了タスク一覧</h3>
-                </div>
+                    <div class="box-header ui-sortable-handle" style="cursor: move;">
+                        <i class="ion ion-clipboard"></i>
+                        <h3 class="box-title">未完了タスク一覧</h3>
+                    </div>
                     <div class="box-body">
                         <div class="box-footer clearfix no-border">
                             <a href="post.php"><button class="btn btn-default pull-left"><i class="fa fa-plus"></i> タスク追加</button></a>
                         </div>
                         <ul class="todo-list ui-sortable">
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Check your messages and notifications</span>
-                            <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
+                            <?php foreach($tasks as $task): ?>
+                                    <li>
+                                        <span class="handle ui-sortable-handle">
+                                          <i class="fa fa-ellipsis-v"></i>
+                                          <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                                        <input type="checkbox" value="1" name="done">
+                                        <span class="text"><?php echo $task['title']; ?></span>
+                                        <span class="text">完了予定日：<?php echo $task['plan_date']; ?></span>
+                                        <span class="text">優先順位：<?php echo $task['priority']; ?></span>
+                                        <small class="label label-primary"><i class="fa fa-edit"></i> 詳細・編集</small>
+                                        <small class="label label-danger"><i class="fa fa-trash-o"></i>削除</small>
+                                    </li>
+                            <?php endforeach; ?>
                         </ul>
-                      </div>
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
