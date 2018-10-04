@@ -55,8 +55,5 @@
             </div>
         </div>
     </header>
-<!-- ヘッダー終わり -->
-    <!--    自分で作ったやつ -->
-    <script src="assets/js/script.js"></script>
 </body>
 </html>
