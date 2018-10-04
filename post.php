@@ -50,7 +50,7 @@ if(!empty($_POST)){
 </head>
 <body>
     <div class="center">
-        <h1>To do list</h1>
+        <h1 class="text-center">To Do List</h1>
     </div>
     <!-- タスク登録 -->
     <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner">
