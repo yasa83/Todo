@@ -12,16 +12,7 @@
     <div class="center">
         <h1>To do list</h1>
     </div>
-<!--     <div class="container">
-        <div class="row">
-            <ul class="nav nav-tabs">
-                <li class="col-xs-2 done active"><a>完了タスク一覧</a></li>
-                <li class="col-xs-2 not-done"><a>未完了タスク一覧</a></li>
-            </ul>
-            <br>
-        </div>
-    </div>
- -->
+
 
 <!-- 完了タスク -->
     <div class="container">
@@ -130,7 +121,7 @@
                 <div class="box box-green">
                     <div class="box-header ui-sortable-handle" style="cursor: move;">
                         <i class="ion ion-clipboard"></i>
-                        <h3 class="box-title">To Do List</h3>
+                        <h3 class="box-title">未完了タスク</h3>
                     </div>
 
                       <div class="box-body">

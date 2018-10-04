@@ -12,219 +12,50 @@
     <div class="center">
         <h1>To do list</h1>
     </div>
-<!--     <div class="container">
-        <div class="row">
-            <ul class="nav nav-tabs">
-                <li class="col-xs-2 done active"><a>完了タスク一覧</a></li>
-                <li class="col-xs-2 not-done"><a>未完了タスク一覧</a></li>
-            </ul>
-            <br>
-        </div>
-    </div>
- -->
-
-<!-- 完了タスク -->
-    <div class="container">
-        <div class="row row-bottom-padded-md " id="done">
-            <div class="col-xs-12 col-md-12">
-                <div class="box box-aqua">
-                <div class="box-header ui-sortable-handle" style="cursor: move;">
-                    <i class="ion ion-clipboard"></i>
-                    <h3 class="box-title">完了タスク一覧</h3>
-                </div>
-                    <div class="box-body">
-                        <ul class="todo-list ui-sortable">
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Design a nice theme</span>
-                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Make the theme responsive</span>
-                            <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Check your messages and notifications</span>
-                            <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="box-footer clearfix no-border">
-                      <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-                      </div>
-                </div>
-                </div>
+    <!-- タスク登録 -->
+    <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner">
+        <div class="overlay"></div>
+        <div class="container" style="padding-top:45px;">
+            <div class="col-xs-8 col-xs-offset-2 thumbnail">
+                <h2 class="text-center content_header">タスク登録</h2>
+                <form method="POST" action="post.php">
+                    <div class="form-group a">
+                        <label for="title">タイトル</label>
+                        <input type="text" name="title" class="form-control" value="" placeholder="予定の題名">
+                    </div>
+                    <div class="form-group b">
+                        <label for="detail">詳細</label>
+                        <br>
+                        <textarea rows="10" cols="60" name="detail">ここに詳細を記入してください</textarea>
+                    </div>
+                    <div class="form-group c">
+                        <label for="plan_date">予定日</label>
+                        <input type="date" name="input_date" class="form-control" value="">
+                    </div>
+                    <div class="form-group d">
+                        <label>優先順位</label>
+                        <br>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="priority" value="high" checked="checked">高
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="priority" value="middle">中
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="priority" value="low">低
+                        </label>
+                    </div>
+                        <input type="hidden" name="friend_id" value="<?php echo $friend_id; ?>">
+                    <br>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="active"><a href="index.php">戻る</a></li>
+                    </ul>
+                    <input type="submit" class="btn btn-primary" value="登録">
+                </form>
             </div>
         </div>
-    </div>
-
-<!-- 未完了タスク -->
-    <div class="container">
-        <div class="row row-bottom-padded-md " id="not-done">
-            <div class="col-xs-12 col-md-12">
-                <div class="box box-green">
-                    <div class="box-header ui-sortable-handle" style="cursor: move;">
-                        <i class="ion ion-clipboard"></i>
-                        <h3 class="box-title">To Do List</h3>
-                    </div>
-
-                      <div class="box-body">
-                        <ul class="todo-list ui-sortable">
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Design a nice theme</span>
-                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Make the theme responsive</span>
-                            <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Check your messages and notifications</span>
-                            <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="box-footer clearfix no-border">
-                      <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-                      </div>
-                    </div>
-                  </div>    
-                </div>
-            </div>
-        </div>
-    </div>
-
+    </header>
+<!-- ヘッダー終わり -->
     <!--    自分で作ったやつ -->
     <script src="assets/js/script.js"></script>
 </body>
