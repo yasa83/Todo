@@ -10,20 +10,23 @@
 </head>
 <body>
     <div class="center">
-        <h1>To do list</h1>
+        <h1 class="text-center">To Do List</h1>
     </div>
 
 
-<!-- 完了タスク -->
+<!-- 未完了タスク -->
     <div class="container">
         <div class="row row-bottom-padded-md " id="done">
             <div class="col-xs-12 col-md-12">
                 <div class="box box-aqua">
                 <div class="box-header ui-sortable-handle" style="cursor: move;">
                     <i class="ion ion-clipboard"></i>
-                    <h3 class="box-title">完了タスク一覧</h3>
+                    <h3 class="box-title">未完了タスク一覧</h3>
                 </div>
                     <div class="box-body">
+                        <div class="box-footer clearfix no-border">
+                            <a href="post.php"><button class="btn btn-default pull-left"><i class="fa fa-plus"></i> タスク追加</button></a>
+                        </div>
                         <ul class="todo-list ui-sortable">
                           <li>
                             <span class="handle ui-sortable-handle">
@@ -105,23 +108,21 @@
                           </li>
                         </ul>
                       </div>
-                      <div class="box-footer clearfix no-border">
-                      <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-                      </div>
+
                 </div>
                 </div>
             </div>
         </div>
     </div>
 
-<!-- 未完了タスク -->
+<!-- 完了タスク -->
     <div class="container">
         <div class="row row-bottom-padded-md " id="not-done">
             <div class="col-xs-12 col-md-12">
                 <div class="box box-green">
                     <div class="box-header ui-sortable-handle" style="cursor: move;">
                         <i class="ion ion-clipboard"></i>
-                        <h3 class="box-title">未完了タスク</h3>
+                        <h3 class="box-title">完了タスク</h3>
                     </div>
 
                       <div class="box-body">
@@ -205,9 +206,6 @@
                             </div>
                           </li>
                         </ul>
-                      </div>
-                      <div class="box-footer clearfix no-border">
-                      <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
                       </div>
                     </div>
                   </div>    
