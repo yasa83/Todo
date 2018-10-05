@@ -14,6 +14,7 @@ $task = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
 //空の値を用意
+$done = '';
 $title = '';
 $detail = '';
 $plan_date = '';
@@ -21,6 +22,7 @@ $done_date = '';
 $priority = '';
 
 if(!empty($_POST)){
+    $done = $_POST['done'];
     $title = $_POST['title'];
     $detail = $_POST['detail'];
     $plan_date = $_POST['plan_date'];
@@ -38,8 +40,8 @@ if(!empty($_POST)){
 
     //エラーがなかった時の処理
     if(empty($errors)){
-        $sql = 'UPDATE `tasks` SET `title` =?, `detail`=?, `plan_date` = ?,`done_date` = ?,`priority` = ? WHERE `id` = ?';
-        $data = array($title,$detail,$plan_date,$done_date, $priority, $id);
+        $sql = 'UPDATE `tasks` SET `done` = ?,`title` =?, `detail`=?, `plan_date` = ?,`done_date` = ?,`priority` = ? WHERE `id` = ?';
+        $data = array($done,$title,$detail,$plan_date,$done_date, $priority, $id);
         $stmt = $dbh->prepare($sql);
         $stmt->execute($data);
 
@@ -62,40 +64,44 @@ if(!empty($_POST)){
     <title>To Do List</title>
 </head>
 <body>
-    <div class="center">
-        <h1 class="text-center">To Do List</h1>
-    </div>
     <!-- タスク編集 -->
     <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner">
         <div class="overlay"></div>
         <div class="container" style="padding-top:45px;">
             <div class="col-xs-8 col-xs-offset-2 thumbnail">
+                <div class="box box-aqua"></div>
                 <h2 class="text-center content_header">タスク詳細・編集</h2>
+                <div class="box box-aqua"></div>
                 <form method="POST" action="edit.php" onsubmit="return submitChk()">
                     <div class="form-group a">
+                        <label for="check">完了したらチェックを入れてください</label>
+                        <br>
+                        <input type="checkbox" name="done" value="1">完了
+                    </div>
+                    <div class="form-group b">
                         <label for="title">タイトル</label>
                         <input type="text" name="title" class="form-control" value="<?php echo $task['title']; ?>">
                         <?php if(isset($errors['title']) && $errors['title'] == 'blank'): ?>
                             <p class="text-danger">タイトルを入力してください</p>
                         <?php endif;?>
                     </div>
-                    <div class="form-group b">
+                    <div class="form-group c">
                         <label for="detail">詳細</label>
                         <br>
                         <textarea rows="10" cols="60" name="detail"><?php echo $task['detail']; ?></textarea>
                     </div>
-                    <div class="form-group c">
+                    <div class="form-group d">
                         <label for="plan_date">予定日</label>
                         <input type="date" name="plan_date" class="form-control" value="<?php echo $task['plan_date']; ?>">
                         <?php if(isset($errors['plan_date']) && $errors['plan_date'] == 'blank'): ?>
                             <p class="text-danger">終了予定日を入力してください</p>
                         <?php endif;?>
                     </div>
-                    <div class="form-group d">
+                    <div class="form-group e">
                         <label for="plan_date">完了日</label>
                         <input type="date" name="done_date" class="form-control" value="<?php echo $task['done_date']; ?>">
                     </div>
-                    <div class="form-group e">
+                    <div class="form-group f">
                         <label>優先順位</label>
                         <br>
                         <label class="checkbox-inline">

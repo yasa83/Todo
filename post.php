@@ -49,9 +49,6 @@ if(!empty($_POST)){
     <title>To Do List</title>
 </head>
 <body>
-    <div class="center">
-        <h1 class="text-center">To Do List</h1>
-    </div>
     <!-- タスク登録 -->
     <header id="fh5co-header" class="fh5co-cover fh5co-cover-sm" role="banner">
         <div class="overlay"></div>
