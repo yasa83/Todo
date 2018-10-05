@@ -57,7 +57,7 @@ while (1) {
                                         <strong><?php echo $task['title']; ?></strong>
                                         <span class="text">完了予定日：<?php echo $task['plan_date']; ?></span>
                                         <span class="text">優先順位：<?php echo $task['priority']; ?></span>
-                                        <small class="label label-primary"><i class="fa fa-edit"></i> 詳細・編集</small>
+                                        <a href="edit.php?id=<?php echo $task['id']; ?>"><small class="label label-primary"><i class="fa fa-edit"></i> 詳細・編集</small></a>
                                         <a href="delete.php?id=<?php echo $task['id']; ?>"><small class="label label-danger" onClick="disp()"><i class="fa fa-trash-o"></i>削除</small></a>
                                     </li>
                                 <?php else: ?>

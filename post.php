@@ -91,8 +91,6 @@ if(!empty($_POST)){
                             <input type="radio" name="priority" value="低">低
                         </label>
                     </div>
-                        <input type="hidden" name="friend_id" value="<?php echo $friend_id; ?>">
-                    <br>
                     <ul class="nav navbar-nav navbar-left">
                         <li class="active"><a href="index.php">戻る</a></li>
                     </ul>
