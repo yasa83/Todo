@@ -2,9 +2,10 @@
 require('dbconnect.php');
 
 // DBから未完了タスクを取得する処理
-$sql = 'SELECT * FROM `tasks` WHERE `done` = 0 ORDER BY `plan_date` DESC';
+$sql = 'SELECT * FROM `tasks` WHERE `done` = 0';
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
+
 $tasks = array();
 while (1) {
     $rec = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -13,6 +14,9 @@ while (1) {
     }
     $tasks[] = $rec;
 }
+
+// var_dump($tasks);
+// die();
 
 ?>
 <!DOCTYPE html>
@@ -46,18 +50,22 @@ while (1) {
                         </div>
                         <ul class="todo-list ui-sortable">
                             <?php foreach($tasks as $task): ?>
+                                <?php if($task !== false ): ?>
                                     <li>
                                         <span class="handle ui-sortable-handle">
                                           <i class="fa fa-ellipsis-v"></i>
                                           <i class="fa fa-ellipsis-v"></i>
                                         </span>
                                         <input type="checkbox" value="1" name="done">
-                                        <span class="text"><?php echo $task['title']; ?></span>
+                                        <strong><?php echo $task['title']; ?></strong>
                                         <span class="text">完了予定日：<?php echo $task['plan_date']; ?></span>
                                         <span class="text">優先順位：<?php echo $task['priority']; ?></span>
                                         <small class="label label-primary"><i class="fa fa-edit"></i> 詳細・編集</small>
                                         <small class="label label-danger"><i class="fa fa-trash-o"></i>削除</small>
                                     </li>
+                                <?php else: ?>
+                                    <?php echo '未完了タスクがありません';?>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </ul>
                     </div>
