@@ -107,7 +107,7 @@ if(!empty($_POST)){
     */
     function submitChk () {
         /* 確認ダイアログ表示 */
-        var flag = confirm ( "送信してもよろしいですか？\n\n送信したくない場合は[キャンセル]ボタンを押して下さい");
+        var flag = confirm ( "タスクを登録してもよろしいですか？\n\n登録したくない場合は[キャンセル]ボタンを押して下さい");
         /* send_flg が TRUEなら送信、FALSEなら送信しない */
         return flag;
     }

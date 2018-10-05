@@ -15,9 +15,6 @@ while (1) {
     $tasks[] = $rec;
 }
 
-// var_dump($tasks);
-// die();
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -61,7 +58,7 @@ while (1) {
                                         <span class="text">完了予定日：<?php echo $task['plan_date']; ?></span>
                                         <span class="text">優先順位：<?php echo $task['priority']; ?></span>
                                         <small class="label label-primary"><i class="fa fa-edit"></i> 詳細・編集</small>
-                                        <small class="label label-danger"><i class="fa fa-trash-o"></i>削除</small>
+                                        <a href="delete.php?id=<?php echo $task['id']; ?>"><small class="label label-danger" onClick="disp()"><i class="fa fa-trash-o"></i>削除</small></a>
                                     </li>
                                 <?php else: ?>
                                     <?php echo '未完了タスクがありません';?>
@@ -172,7 +169,28 @@ while (1) {
             </div>
         </div>
     </div>
+<script type="text/javascript">
+function disp(){
+    // 「OK」時の処理開始 ＋ 確認ダイアログの表示
+    if(window.confirm('本当にいいんですね？')){
 
+        location.href = "example_confirm.html"; // example_confirm.html へジャンプ
+
+    }
+    // 「OK」時の処理終了
+
+    // 「キャンセル」時の処理開始
+    else{
+
+        window.alert('キャンセルされました'); // 警告ダイアログを表示
+
+    }
+    // 「キャンセル」時の処理終了
+
+}
+
+// -->
+</script>
     <!--    自分で作ったやつ -->
     <script src="assets/js/script.js"></script>
 </body>
