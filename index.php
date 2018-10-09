@@ -2,7 +2,7 @@
 require('dbconnect.php');
 
 // DBから未完了タスクを取得する処理
-$sql = 'SELECT * FROM `tasks` WHERE `done` = 0';
+$sql = 'SELECT * FROM `tasks` WHERE `done` = 0 ORDER by abs(datediff(CURDATE(), `plan_date`)）ASC';
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
 
@@ -13,6 +13,20 @@ while (1) {
         break;
     }
     $tasks[] = $rec;
+}
+
+// DBから完了タスクを取得する処理
+$sql = 'SELECT * FROM `tasks` WHERE `done` = 1';
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
+
+$done_tasks = array();
+while (1) {
+    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($rec == false) {
+        break;
+    }
+    $done_tasks[] = $rec;
 }
 
 ?>
@@ -47,11 +61,11 @@ while (1) {
                         </div>
                         <ul class="todo-list ui-sortable">
                             <?php foreach($tasks as $task): ?>
-                                <?php if($task !== false ): ?>
+                                <?php if($task['id'] !== false ): ?>
                                     <li>
                                         <span class="handle ui-sortable-handle">
-                                          <i class="fa fa-ellipsis-v"></i>
-                                          <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
                                         </span>
                                         <input type="checkbox" value="1" name="done">
                                         <strong><?php echo $task['title']; ?></strong>
@@ -80,87 +94,26 @@ while (1) {
                         <i class="ion ion-clipboard"></i>
                         <h3 class="box-title">完了タスク</h3>
                     </div>
-
-                      <div class="box-body">
+                    <div class="box-body">
                         <ul class="todo-list ui-sortable">
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Design a nice theme</span>
-                            <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Make the theme responsive</span>
-                            <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Check your messages and notifications</span>
-                            <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
-                          <li>
-                            <span class="handle ui-sortable-handle">
-                              <i class="fa fa-ellipsis-v"></i>
-                              <i class="fa fa-ellipsis-v"></i>
-                            </span>
-                            <input type="checkbox" value="" name="">
-                            <span class="text">Let theme shine like a star</span>
-                            <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-                            <div class="tools">
-                              <i class="fa fa-edit"></i>
-                              <i class="fa fa-trash-o"></i>
-                            </div>
-                          </li>
+                            <?php foreach($done_tasks as $done_task): ?>
+                                <?php if($done_task['id'] !== null ): ?>
+                                    <li>
+                                        <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                                        <input type="checkbox" value="1" name="done">
+                                        <strong><?php echo $done_task['title']; ?></strong>
+                                        <span class="text">完了日：<?php echo $done_task['done_date']; ?></span>
+                                        <span class="text">優先順位：<?php echo $done_task['priority']; ?></span>
+                                        <a href="edit.php?id=<?php echo $done_task['id']; ?>"><small class="label label-primary"><i class="fa fa-edit"></i> 詳細・編集</small></a>
+                                        <a href="delete.php?id=<?php echo $done_task['id']; ?>"><small class="label label-danger" onClick="disp()"><i class="fa fa-trash-o"></i>削除</small></a>
+                                    </li>
+                                <?php else: ?>
+                                    <?php echo '未完了タスクがありません';?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                         </ul>
                       </div>
                     </div>
